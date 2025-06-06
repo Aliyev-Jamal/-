@@ -1,0 +1,325 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    user-select: none;
+    font-family: 'MyFont', sans-serif;
+    background: black;
+    color: white;
+    overflow: hidden;
+}
+
+.menu-screen{
+    width: 100vw;
+    height: 100vh;
+    background: url(../assets/stars.webp);
+    display: block;
+}
+
+.menu-screen h1,h2{
+    position: relative;
+    text-align: center;
+    margin-top: 20px;
+    top: 10%;
+}
+
+#version{
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    font-size: medium;
+    color: white;
+}
+
+.mars{
+    position: absolute;
+    left: 60%;
+    top: 30%;
+    animation: rotatePlanet 26s linear infinite;
+    & img{
+        z-index: 1;
+    }
+}
+
+.rocket{
+    position: absolute;
+    left: 15%;
+    top: 40%;
+    transition: 2s ease-in, left 2s ease-in;
+    z-index: 5;
+}
+
+#rocket{
+    position: absolute;
+    z-index: 3;
+    transform: translate(-50%, -50%);
+}
+
+#fire{
+    position: absolute;
+    z-index: 2;
+    top: 180px;
+    transform: rotateX(180deg) translate(-50%, -50%);
+}
+
+#explosion{
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    z-index: 4;
+    top: 400px;
+    left: 73%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+#start-btn{
+    font-family: 'MyFont', sans-serif;
+    position: relative;
+    left: 40%;
+    top: 20%;
+    background: black;
+    color: white;
+    border: 2px solid white;
+    padding: 10px 20px;
+    font-size: 20px;
+    cursor: pointer;
+    &:hover{
+        background: white;
+        color: black;
+        border: 2px solid black;
+    }
+}
+
+.loading-screen{
+    width: 100vw;
+    height: 100vh;
+    background: black;
+    color: white;
+    font-family: 'MyFont', sans-serif;
+    text-align: center;
+    z-index: 10;
+    display: none;
+    & h1{
+        position: relative;
+        top: 70%;
+        font-size: 30px;
+    }
+}
+
+.game-screen{
+    width: 100vw;
+    height: 100vh;
+    color: white;
+    z-index: 12;
+    font-family: 'MyFont', sans-serif;
+    background: url(../assets/mars-bg.png) no-repeat center / cover;
+    display: none;
+}
+
+#score-display{
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: black;
+    border: 2px solid white;
+    color: white;
+    font-size: larger;
+    font-family: 'MyFont', sans-serif;
+    padding: 10px 15px;
+    z-index: 15;
+    display: none;
+}
+
+#alien{
+    width: 400px;
+    height: 600px;
+    position: absolute;
+    left: 65%;
+    top: 22%;
+    animation: alienMove 3s ease-in-out infinite;
+}
+
+#destroyed-rocket{
+    width: 500px;
+    height: 700px;
+    position: absolute;
+    left: 15%;
+    top: 30%;
+    rotate: 110deg;
+}
+
+.dialog-box{
+    width: 420px;
+    height: 220px;
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    padding: 30px;
+    background: url(../assets/dialog-box.png) no-repeat center;
+    background-size: 160% 130%;
+}
+
+#dialog-text{
+    color: black;
+    font-size: medium;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-nav{
+    position: absolute;
+    left: 55%;
+    top: 30%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#next-btn,#option-two-btn,
+#option-three-btn{
+    width: 220px;
+    height: 50px;
+    background: black;
+    color: white;
+    font-family: 'MyFont', sans-serif;
+    border: 2px solid white;
+    padding: 5px 10px;
+    font-size: medium;
+    cursor: pointer;
+    &:hover{
+        background: white;
+        color: black;
+        border: 2px solid black;
+    }
+}
+
+#option-two-btn,
+#option-three-btn{
+    display: none;
+}
+
+
+.end-screen{
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(to bottom, black, rgb(150, 0, 0));
+    color: white;
+    padding: 20px;
+    text-align: center;
+    align-content: center;
+    font-family: 'MyFont', sans-serif;
+    display: none;
+    & h1{
+        font-size: xx-large;
+    }
+}
+
+#final-score{
+    font-size: x-large;
+    margin-top: 20px;
+    z-index: 20;
+}
+
+#final-message{
+    font-size: larger;
+    margin-top: 20px;
+    z-index: 20;
+}
+
+#final-story{
+    font-size: large;
+    margin-top: 20px;
+    margin-bottom: 100px;
+    z-index: 20;
+}
+
+#final-image{
+    width: 500px;
+    height: 800px;
+    position: absolute;
+    z-index: 16;
+    left: 37%;
+    top: 50%;
+    animation: alienMoveLeft 20s ease infinite;
+    & img{
+        z-index: 16;
+    }
+}
+
+@keyframes btnAnimation {
+    0% {
+        transform: scale(1.2);
+        color: white;
+        background: black;
+    }
+    25% {
+        transform: scale(1.1);
+        color: black;
+        background: white;
+    }
+    50% {
+        transform: scale(1);
+        color: white;
+        background: black;
+    }
+    75% {
+        color: black;
+        background: white;
+    }
+    100% {
+        color: white;
+        background: black;
+    }
+}
+
+@keyframes alienMove {
+    0% {
+        height: 600px;
+    }
+    50% {
+        height: 620px;
+    }
+    100% {
+        height: 600px;
+    }
+}
+
+@keyframes alienMoveLeft {
+    0% {
+        transform: translateX(0%);
+    }
+    25% {
+        transform: translateX(10%);
+    }
+    50% {
+        transform: translateX(0%);
+    }
+    75% {
+        transform: translateX(-10%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+@keyframes rotatePlanet {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@font-face {
+  font-family: 'MyFont';
+  src: url('../fonts/NineteenEightySeven.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}

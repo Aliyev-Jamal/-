@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Космический Квест: Выживание на Марсе</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="./style/style.css">
+    <script src="./js/index.js" defer></script>
+</head>
+<body>
+    <div class="app">
+        <div class="menu-screen">
+            <div class="rocket">
+                <img id="rocket" src="./assets/rocket.png" alt="Rocket">
+                <img id="fire" src="./assets/flame.gif" alt="Fire">
+            </div>
+            <img id="explosion" src="./assets/explosion.gif" alt="Explosion">
+            <img class="mars" src="./assets/mars-planet.png" alt="Mars">
+            <h1>Космический Квест</h1>
+            <h2>«Выживание на Марсе»</h2>
+            <button id="start-btn">Начать Выживание</button>
+            <p id="version">v1.0.0</p>
+        </div>
+        <div class="loading-screen">
+            <h1>Загрузка...</h1>
+        </div>
+        <div class="game-screen">
+            <div id="score-display">Очки выживания: 0</div>
+            <img id="destroyed-rocket" src="./assets/damaged-rocket.png" alt="Damaged Rocket">
+            <img id="alien" src="./assets/alien.png" alt="Alien">
+            <div class="dialog-box">
+                <p id="dialog-text">Пип... Пип... Пип...</p>
+            </div>
+            <div class="game-nav">
+                <button class="nav-btns" id="next-btn">...</button>
+                <button class="nav-btns" id="option-two-btn">...</button>
+                <button class="nav-btns" id="option-three-btn">...</button>
+            </div>
+        </div>
+        <div class="end-screen">
+            <img id="final-image" src="./assets/alien.png" alt="Final Alien">
+            <h1>Финал Игры</h1>
+            <p id="final-score">Ваши очки: 0</p>
+            <p id="final-message"></p>
+            <p id="final-story"></p>
+        </div>
+    </div>
+</body>
+</html>
