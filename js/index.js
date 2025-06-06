@@ -21,7 +21,7 @@ const optionTwoBtn = document.getElementById('option-two-btn');
 const optionThreeBtn = document.getElementById('option-three-btn');
 
 let musicPack = {
-    bgMusic: new Audio('../audio/bg-music.mp3'),
+    bgMusic : new Audio('../audio/bg-music.mp3'),
     explosionSound: new Audio('../audio/explosion.mp3'),
     confirmSound: new Audio('../audio/confirm.mp3'),
     endingMusic: new Audio('../audio/ending-music.mp3'),
@@ -100,7 +100,7 @@ const questionsLines = [
     },
     {
         question: 'Пятый вопрос. Какая планета ближе всего к Марсу?',
-        options: ['Венера', 'Земля', 'Юпитер'],
+        options: ['Венера','Земля', 'Юпитер'],
         answer: 1,
         feedback: ['Нет, Венера ближе к Земле, чем к нам. -10 очков!', 'Правильно! Ваша Земля ближе всего к Марсу. +10 очков!', 'Юпитер слишком далеко от Марса. -10 очков!']
     },
@@ -208,7 +208,9 @@ function handleAnswer(selectedIndex) {
     optionTwoBtn.style.display = 'none';
     optionThreeBtn.style.display = 'none';
 
-    const isCorrect = correct.includes(selectedIndex) || selectedIndex === correct;
+    const isCorrect = Array.isArray(correct) // Написанно GPT // Array нужен для работы с массивами ведь у меня может быть несколько правильных ответов
+        ? correct.includes(selectedIndex)
+        : selectedIndex === correct;
 
     survivalPoints += isCorrect ? 10 : -10;
 
@@ -248,11 +250,11 @@ showFinalResult = () => {
             document.getElementById('final-score').textContent = `Ваши очки: ${survivalPoints}`;
             document.getElementById('final-message').textContent = 'Вы успешно выжили и покинули Марс починив ракету!';
             document.getElementById('final-story').textContent = 'Вы спаслись набрав больше 50 очков! Вы смогли починить свою ракету и вернуться домой. Марсианин долго радовался вашему достижению, но потом ему стало одиноко и он собрав летающий корабль решил отправиться за вами на Землю. Продолжение следует!';
-        } else if (survivalPoints >= 20) {
+        }else if (survivalPoints >= 20) {
             document.getElementById('final-score').textContent = `Ваши очки: ${survivalPoints}`;
             document.getElementById('final-message').textContent = 'Вы выжили на Марсе, но не смогли починить ракету.';
             document.getElementById('final-story').textContent = 'Вы провели на Марсе много времени, но в конце концов вам не хватило ресурсов для починки ракеты. Но вы наладили пробелму с кислородом. Марсианин остался с вами, теперь вы лучшие друзья. Вы решили исследовать планету вместе. Кто его знает, может быть, вы найдете способ вернуться домой позже.';
-        } else {
+        }else {
             document.getElementById('final-score').textContent = `Ваши очки: ${survivalPoints}`;
             document.getElementById('final-message').textContent = 'Вы не смогли дожить и до утра на Марсе.';
             document.getElementById('final-story').textContent = 'Вы сделали все возможное, но в конце концов вы были бессильны и кислород закончился. Марсианин остался один на планете, ему стало грустно от утраты своего нового друга...';
