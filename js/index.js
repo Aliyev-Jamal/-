@@ -21,10 +21,10 @@ const optionTwoBtn = document.getElementById('option-two-btn');
 const optionThreeBtn = document.getElementById('option-three-btn');
 
 let musicPack = {
-    bgMusic : new Audio('../audio/bg-music.mp3'),
-    explosionSound: new Audio('../audio/explosion.mp3'),
-    confirmSound: new Audio('../audio/confirm.mp3'),
-    endingMusic: new Audio('../audio/ending-music.mp3'),
+    bgMusic : new Audio('./audio/bg-music.mp3'),
+    explosionSound: new Audio('./audio/explosion.mp3'),
+    confirmSound: new Audio('./audio/confirm.mp3'),
+    endingMusic: new Audio('./audio/ending-music.mp3'),
 }
 
 let survivalPoints = 0;
